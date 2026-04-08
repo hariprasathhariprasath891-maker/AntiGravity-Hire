@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="hero">
+    <h1>Elevate the Best Talent</h1>
+    <p>Welcome to AntiGravity Hire. A bias-free, intelligent recruitment platform where skills naturally rise to the top. Say goodbye to resumes, say hello to results.</p>
+    <div>
+        <a href="{{ url_for('register') }}" class="btn btn-primary" style="margin-right: 15px;">Become a Candidate</a>
+        <a href="{{ url_for('login') }}" class="btn btn-secondary">HR Login</a>
+    </div>
+</div>
+{% endblock %}

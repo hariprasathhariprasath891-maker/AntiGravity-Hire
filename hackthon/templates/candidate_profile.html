@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="glass-panel" style="max-width: 600px; margin: 0 auto;">
+    <h2 style="color: var(--secondary); margin-bottom: 2rem;">Update Your Astronaut Specs</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label>Relevant Skills (Comma separated)</label>
+            <input type="text" name="skills" class="form-control" value="{{ skills_str }}" required placeholder="e.g., Python, Docker, React">
+        </div>
+        <div class="form-group">
+            <label>Experience Level</label>
+            <select name="level" class="form-control" required style="background: rgba(0,0,0,0.8);">
+                <option value="fresher" {% if profile and profile.experience_level == 'fresher' %}selected{% endif %}>Fresher (0-2 years)</option>
+                <option value="experienced" {% if profile and profile.experience_level == 'experienced' %}selected{% endif %}>Experienced (3+ years)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Years of Experience</label>
+            <input type="number" name="years" class="form-control" value="{{ profile.experience_years if profile else 0 }}" min="0" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">Save Specifications</button>
+    </form>
+</div>
+{% endblock %}

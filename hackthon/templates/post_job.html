@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="glass-panel" style="max-width: 600px; margin: 0 auto;">
+    <h2 style="color: var(--secondary); margin-bottom: 2rem;">Post New Job Mission</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label>Job Title</label>
+            <input type="text" name="title" class="form-control" required placeholder="e.g., Senior Full Stack Engineer">
+        </div>
+        <div class="form-group">
+            <label>Required Skills (Comma separated)</label>
+            <input type="text" name="skills" class="form-control" required placeholder="e.g., Python, JavaScript, SQL">
+        </div>
+        <div class="form-group">
+            <label>Salary Range (Optional)</label>
+            <input type="text" name="salary" class="form-control" placeholder="e.g., $100k - $120k">
+        </div>
+        <div class="form-group">
+            <label>Target Level</label>
+            <select name="level" class="form-control" required style="background: rgba(0,0,0,0.8);">
+                <option value="fresher">Fresher</option>
+                <option value="experienced">Experienced</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Generate JD & Post</button>
+    </form>
+</div>
+{% endblock %}

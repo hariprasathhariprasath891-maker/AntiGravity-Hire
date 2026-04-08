@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="glass-panel" style="margin-bottom: 2rem;">
+    <h2 style="color: var(--primary);">Mission: {{ job.title }}</h2>
+    <p style="color: var(--secondary);">Status: {{ job.status | capitalize }}</p>
+    <div>
+        {{ job.description | safe }}
+    </div>
+</div>
+
+<h3 style="color: white; margin-bottom: 1.5rem;">Top Candidates (Shortlisted by AntiGravity)</h3>
+<div class="glass-panel">
+    <div class="application-list">
+        {% for app in applications %}
+        <div class="app-item">
+            <div>
+                <h4 style="margin: 0 0 0.5rem 0; color: white; display: flex; align-items: center;">
+                    <span class="badge" style="margin-right: 10px;">Rank #{{ loop.index }}</span>
+                    {{ app.candidate.pseudo_id }}
+                </h4>
+                <p style="margin: 0; color: #94a3b8; font-size: 0.9rem;">
+                    Skills: {% set skills = app.candidate.get_skills_list() %} {{ skills | join(', ') }} 
+                    | Level: {{ app.candidate.experience_level | capitalize }}
+                </p>
+                {% if app.warnings > 0 %}
+                <p style="margin: 0.5rem 0 0 0; color: var(--accent); font-size: 0.8rem;">
+                    ⚠️ Tab Switch Warnings: {{ app.warnings }}
+                </p>
+                {% endif %}
+            </div>
+            <div style="text-align: center;">
+                <div class="score-circle">{{ app.total_score }}</div>
+                <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #94a3b8;">Score</p>
+            </div>
+        </div>
+        {% else %}
+        <p>No applications received yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

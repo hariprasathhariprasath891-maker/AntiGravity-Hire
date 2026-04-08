@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="glass-panel" style="max-width: 800px; margin: 0 auto; position: relative;">
+    <div class="warning-box" id="warningBox">
+        <strong>WARNING:</strong> Unauthorized tab switch detected. Focus on your console! Violations: <span id="warningCount">0</span>/3
+    </div>
+
+    <div class="test-header">
+        <div>
+            <h2 style="margin: 0; color: var(--primary);">Mission Evaluation</h2>
+            <p style="margin: 0; color: #94a3b8;">Job: {{ application.job.title }}</p>
+        </div>
+        <div class="timer" id="timer">15:00</div>
+    </div>
+
+    <div id="questionContainer">
+        <h3 style="color: white; margin-bottom: 1rem;">Question 1: Algorithm Analysis</h3>
+        <p style="color: #cbd5e1;">Write a function or query to optimize a slow space-time database calculation.</p>
+        <textarea class="form-control" rows="8" placeholder="Write your code here..." style="font-family: monospace;"></textarea>
+    </div>
+
+    <form id="submitTestForm" action="{{ url_for('submit_test', application_id=application.id) }}" method="POST" style="margin-top: 2rem; text-align: right;">
+        <input type="hidden" name="warnings" id="warningsInput" value="0">
+        <button type="button" class="btn btn-primary" onclick="submitTest()">Transmit Answers</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/test_tracker.js') }}"></script>
+{% endblock %}

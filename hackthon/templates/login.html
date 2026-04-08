@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div style="max-width: 400px; margin: 0 auto; margin-top: 5rem;" class="glass-panel">
+    <h2 style="text-align: center; margin-bottom: 2rem; color: var(--secondary);">Mission Control Login</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label>Email ID</label>
+            <input type="email" name="email" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Dock</button>
+    </form>
+    <p style="text-align: center; margin-top: 1.5rem;">New astronaut? <a href="{{ url_for('register') }}" style="color: var(--primary);">Register here</a></p>
+</div>
+{% endblock %}
